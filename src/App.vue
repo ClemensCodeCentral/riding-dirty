@@ -1,18 +1,52 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+      <span>Riding Dirty?</span>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
+      <div class="container">
+        <div class="title" v-for="crime in crimes" :key="crime" >
+          <div>{{ crime.name }}</div>
+          <div>{{ crime.points }}</div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      crimes: [
+        {
+          name: "Weed",
+          points: 1
+        },
+        {
+          name: "Meth",
+          points: 5
+        },
+        {
+          name: "Suspended license",
+          points: 10
+        },
+        {
+          name: "Other illegal drugs",
+          points: 15
+        },
+        {
+          name: "????",
+          points: 15
+        },
+        {
+          name: "Hostage",
+          points: 100
+        },
+      ]
+    }
+  }
 }
 </script>
 
@@ -50,5 +84,44 @@ header span {
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;
+}
+
+@media (max-width: 720px) {
+  .title {
+    width: 100%;
+  }
+
+  .container {
+    padding: 16px;
+    display: grid;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 721px) {
+  .title {
+    width: 100%;
+  }
+
+  .container {
+    padding: 16px;
+    display: grid;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    grid-template-columns: repeat(16, 1fr);
+  }
+
+}
+
+.title {
+  background: gray;
+  padding: 4px;
+}
+
+.container {
+  padding: 16px;
+  display: grid;
 }
 </style>
